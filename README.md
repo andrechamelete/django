@@ -1,2 +1,3 @@
 # django
-learning Django
+
+### learning Django with Meta's "Django" and "API" courses on Coursera
