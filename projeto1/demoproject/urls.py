@@ -20,5 +20,8 @@ from demoapp import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('demoapp.urls')),
+    path('', include('demoapp.urls', namespace='demoapp')),
+
 ]
+
+handler404 = 'demoproject.views.handler404'
