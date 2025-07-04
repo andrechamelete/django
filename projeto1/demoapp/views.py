@@ -1,7 +1,8 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from datetime import datetime
-from .forms import ApplicationForm, InputForm, LogForm
+from .forms import DemoForm, InputForm, LogForm
+from .models import Menu
 
 def home(request): 
     path = request.path 
@@ -19,20 +20,15 @@ def date(request):
     date_joined = datetime.today().isoformat()
     return HttpResponse(date_joined)
 
-def home(request):
-    text = """<h1 style="color: #F4CE14;">This is Little Lemon again</h1>"""
-    return HttpResponse(text)
+# def home(request):
+#     text = """<h1 style="color: #F4CE14;">This is Little Lemon again</h1>"""
+#     return HttpResponse(text)
 
 def showForm(request): 
-    form = ApplicationForm(request.POST) 
+    form = DemoForm(request.POST) 
     return render(request, 'form.html', {'form': form}) 
 
 def form_view(request):
-    form = InputForm()
-    context = {"form": form}
-    return render(request, "home.html", context)
-
-def form_v(request):
     form = LogForm()
     if request.method == "POST":
         form = LogForm(request.POST)
@@ -40,3 +36,18 @@ def form_v(request):
             form.save()
     context = {"form": form}
     return render(request, "home.html", context)
+
+def about(request):
+    about_content = {'about': "Based in Chicago, Little Lemon is a restaurant"}
+    return render(request, "about.html", about_content)
+
+def menu(request):
+    menuitem = Menu.objects.all()
+    menu_dict = {'menu': menuitem}
+    return render(request, 'menu.html', menu_dict)
+
+def home(request):
+    return render(request, 'homepage.html', {})
+
+def teste(request):
+    return render(request, 'teste.html', {})

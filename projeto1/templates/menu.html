@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block contents %}
+{% if menu %}
+<h2>Menu</h2>
+<table style="border:1px solid black">
+    {% for item in menu %}
+    <tr>
+        <td style="border:1px solid black">{{item.name}}</td>
+        <td style="border:1px solid black">{{item.cuisine}}</td>
+        <td style="border:1px solid black">{{item.price}}</td>
+    </tr>
+    {% endfor %}
+</table>
+{% else %}
+<h4>No item do Display</h4>
+{% endif %}
+{% endblock %}

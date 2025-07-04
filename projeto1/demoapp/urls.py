@@ -4,10 +4,11 @@ from . import views
 app_name = 'demoapp'
 
 urlpatterns = [
-    path('', views.home),
-    path('home/', views.home),
+    path('', views.home, name='home'),
     path('date/', views.date),
     path("form/", views.showForm, name="Form"),
     path("homepage/", views.form_view, name="homepage"),
-    path("form_v/", views.form_v, name="form_v"),
+    path("about/", views.about, name="about"),
+    path('menu/', views.menu, name='menu'),
+    path('teste/', views.teste, name="teste")
 ]
